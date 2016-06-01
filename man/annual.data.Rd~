@@ -1,0 +1,41 @@
+\name{annual.data}
+\alias{annual.data}
+\title{create an inter-annual dataset}
+\description{create an inter-annual dataset by averaging the measured intra-annual isotope values}
+\usage{annual.data(y, climate.iso)}
+\arguments{
+  \item{y}{study period over which to create an inter-annual dataset}
+  \item{climate.iso}{time resolved intra-annual isotope measurements with matched climate data}
+}
+\value{
+\item{annual.dataset}{inter-annual dataset}
+}
+\author{Alex Soudant}
+
+function (y, climate.iso) 
+{
+    annual.dataset <- matrix(NA, length(y), length(climate.iso[1, 
+        ]))
+    annual.dataset[, 1] <- y
+    for (i in 1:length(y)) {
+        year <- y[i]
+        annual.dataset[i, 2] <- mean(climate.iso[, 2][climate.iso[, 
+            1] == y[i]], na.rm = TRUE)
+        annual.dataset[i, 3] <- max(climate.iso[, 3][climate.iso[, 
+            1] == y[i]]) - min(climate.iso[, 3][climate.iso[, 
+            1] == y[i]])
+        annual.dataset[i, 4] <- mean(climate.iso[, 4][climate.iso[, 
+            1] == y[i]], na.rm = TRUE)
+        annual.dataset[i, 5] <- mean(climate.iso[, 5][climate.iso[, 
+            1] == y[i]], na.rm = TRUE)
+        annual.dataset[i, 6] <- sum(climate.iso[, 6][climate.iso[, 
+            1] == y[i]])
+    }
+    colnames(annual.dataset) <- c("year", "iso", "date", "Temp", 
+        "Rad", "Precip")
+    annual.dataset <<- annual.dataset
+    return(annual.dataset)
+  }
+}
+\keyword{ programming }
+\keyword{ isotope }

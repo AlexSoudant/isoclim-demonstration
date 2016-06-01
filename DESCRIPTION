@@ -1,0 +1,9 @@
+Package: isoclim 
+Type: Package
+Title: Climate Influence Analysis over Stable Isotope Time Series in R
+Version: 1.0
+Date: 2015-06-07
+Author: Alex Soudant
+Maintainer: Alex Soudant <asoudant@hotmail.fr>
+Description: This package takes vegetation stable isotopes and  flux-tower climate data to estimate the growing season, fit Gompertz curves accordingly to the life properties of wood cells and fit  linear regressions between intra-annually time resolved isotopes and co-occuring climate data at a study site 
+License: GPL (>= 2)
